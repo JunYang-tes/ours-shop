@@ -1,0 +1,36 @@
+<!--pages/cart/index.wxml-->
+<include src="/snippets/page-ex" />
+<view class="nodata" wx:if="{{cart.length===0}}">
+  <text>购物车里空荡荡啊，空荡荡~</text>
+</view>
+<view wx:else>
+  <view class="items">
+    <view class="item border border-down {{item.selected?'selected':'un'}}" 
+      bindtap="onItemTap"
+      data-itemId="{{item._id}}"
+      wx:key="cart-items" wx:for="{{cart}}">
+      <image class="cover" mode="aspectFill" src="{{item.cover||'/assets/images/noimg.png'}}" ></image>
+      <view class="info">
+        <text class="name">
+          {{item.name}}
+        </text>
+        <view class="price-row">
+          <text>{{item.price}}</text><text>x{{item.count}}</text>
+        </view>
+      </view>
+      <view class="btn" data-itemId="{{item._id}}" catchtap="onDec">
+        <text class="icon icon-minus"></text>
+      </view> 
+      <view class="btn" data-itemId="{{item._id}}" catchtap="onInc" >
+        <text class="icon icon-plus"></text>
+      </view>
+      <view class="btn" data-itemId="{{item._id}}" catchtap="onDelete">
+        <text class="icon icon-trash"></text>
+      </view>
+    </view>
+  </view>
+  <view class="make-order border border-top">
+    <view>共{{selected}}项,{{amount}}元</view>
+    <view class="order" bindtap="onMakeOrder" disabled>下单</view>
+  </view>
+</view>

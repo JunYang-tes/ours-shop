@@ -1,0 +1,49 @@
+<!--index.wxml-->
+<include src="/snippets/page-ex" />
+<!--
+  key,
+  items:{
+    loading:boolean,
+    data
+  }
+-->
+<template name="items">
+  <view wx:if='{{items.loading}}'>
+    <view class='loading-indictor' />
+  </view>
+  <view class='items'>
+    <!--
+      TODO: Add detail page
+      url='/pages/detail/index?id={{item._id}}'
+    -->
+  <view  class='item fg' wx:key='{{key}}'  wx:for='{{items.data}}' >
+      <image mode="aspectFill" src="{{item.cover || '/assets/images/noimg.png'}}"
+      background-size="cover"
+      lazy-load="true" />
+      <view class="title-row">
+        <text class="item-name">{{item.name}}</text>
+        <view class="price-row">
+          <text class="item-price">{{item.price}}</text>
+          <text class="icon icon-yen"></text>
+        </view>
+      </view>
+      <text data-id="{{item._id}}" bindtap="onCartTap" class="add-to-cart icon icon-shopping-cart"/>
+  </view>
+  </view>
+</template>
+
+
+<view class="container">
+  <view class="title border border-down">
+    店长推荐
+  </view>
+  <template is="items" data='{{key:"recommendation",items:recomendations,cartTap:"onCartTap"}}' />
+
+  <view class="title border border-down">
+    所有商品
+  </view>
+  <template is="items" data='{{ key:"all-items",items }}' />
+
+  <text wx:if="{{!items.loading}}">客官，到底啦~~</text>
+</view>
+<include src="/snipplets/toast" />

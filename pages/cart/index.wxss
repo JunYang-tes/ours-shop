@@ -1,0 +1,50 @@
+/* pages/cart/index.wxss */
+.item {
+  display: flex;
+}
+.item .cover {
+  width:150rpx;
+  height: 150rpx;
+}
+.info {
+  flex-grow: 1
+}
+.btn {
+  width:80rpx;
+  display: flex;
+  justify-content:center;
+}
+.btn .icon {
+  font-size:60rpx;
+  color:#888;
+  margin-right: 0;
+}
+.price-row {
+  display: flex;
+  justify-content: space-between
+}
+.options {
+  display: flex;
+}
+.selected {
+  background: rgba(250, 230, 195, 0.57);
+}
+.make-order{
+  position:fixed;
+  bottom:0;
+  display:flex;
+  height:75rpx;
+  justify-content:space-between;
+  align-items:center;
+  padding-left:5px;
+  box-sizing:border-box;
+  width:100%;
+ }
+.order {
+  height:100%;
+  width:180rpx;
+  background:orange;
+  text-align:center;
+  vertical-align: center; 
+  line-height:30px;
+}

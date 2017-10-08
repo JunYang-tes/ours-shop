@@ -1,0 +1,41 @@
+/* pages/order/index.wxss */
+.tabcard{
+  display: flex;
+  justify-content: center;
+}
+.selected {
+  border-bottom: 4px solid orange;
+}
+.tab {
+  padding:15rpx;
+  font-size:30rpx;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+.item-name {
+  flex-grow: 1;
+}
+.item-count {
+  flex-basis: 50rpx
+}
+.item-price {
+  flex-basis: 50px
+}
+.option{
+  display: flex;
+}
+.info-area {
+  flex-grow: 1;
+  background: #eee;
+}
+.btn {
+  width:140rpx;
+  background: orange;
+  line-height:30px;
+  text-align:center;
+}
+.option .icon {
+  font-size:30rpx;
+}

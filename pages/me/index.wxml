@@ -1,0 +1,49 @@
+<!--pages/me/index.wxml-->
+<include src="/snippets/page-ex" />
+<view wx:if="{{renderLoginBtn}}">
+    <button bindtap='loginBtn'>点击登录</button>
+    <text>我们需要获取您的公开信息~~</text>
+</view>
+<view wx:else>
+    <view class="userinfo border border-down fg">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" />
+        <text class="nickname">{{userInfo.nickName}}</text>
+    </view>
+
+    <navigator open-type="switchTab" class="nav-btn border border-td fg" url="/pages/cart/index">
+        购物车
+    </navigator>
+
+    <view class="card border border-td fg">
+        <text class="title border border-down">收获地址</text>
+        <view class="form-row">
+            <input placeholder="请输入地址" bindconfirm="inputAddrssConfirm"
+                style="flex-grow:1"    
+                value="{{userInfo.address}}"/>
+            <text class="icon {{addressIcon}}" bindtap="addressIconTap"/>
+        </view>
+    </view>
+
+    <view class="card border border-td order fg">
+        <text class="title border border-down">我的订单</text>
+        <view class="order-btns">
+            <view catchtap="switchTab" data-type="pending" data-url="/pages/order/index" class="order-btn">
+                <text class="order-icon icon-btn  icon icon-retweet"></text>
+                <text>待确认</text>
+            </view >
+            <view catchtap="switchTab" data-type="confirmed" data-url="/pages/order/index" class="order-btn">
+                <text class="order-icon icon-btn icon icon-ok"></text>
+                <text>已确认</text>
+            </view >
+            
+            <view catchtap="switchTab" data-type="deliver" data-url="/pages/order/index" class="order-btn">
+                <text class="order-icon icon-btn icon  icon-shopping-cart"/>
+                <text>待收货</text>
+            </view >
+            <view catchtap="switchTab" data-type="completed" url="/pages/order/index" class="order-btn">
+                <text class="order-icon icon-btn icon icon-check" />
+                <text>已完成</text>
+            </view >
+        </view>
+    </view>
+</view>

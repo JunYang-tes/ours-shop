@@ -1,0 +1,38 @@
+<!--pages/order/index.wxml-->
+<include src="/snippets/page-ex" />
+<view class="tabcard">
+  <text bindtap="switchType" data-type="pending" class="tab {{type==='pending' && 'selected'}}" >待确认</text>
+  <text bindtap="switchType" data-type="confirmed" class="tab {{type==='confirmed' && 'selected'}}">已确认</text>
+  <text bindtap="switchType" data-type="deliver" class="tab {{type==='deliver' && 'selected'}}">待收货</text>
+  <text bindtap="switchType" data-type="completed" class="tab {{type==='completed' && 'selected'}}">已完成</text>
+</view>
+<view class="orders" wx:if="{{orders.length}}">
+  <view class="border border-down" wx:key="orders" wx:for="{{orders}}">
+    <view class="items">
+      <view class="item" wx:key="items" wx:for="{{item.items}}">
+        <text class="item-name">
+          {{item.name}}
+        </text>
+        <text class="item-count">
+          x{{item.count}} 
+        </text>
+        <text class="item-price">
+          {{item.price}}
+        </text>
+      </view>
+    </view>
+    <view class="option">
+      <view class="info-area">
+        <text>
+          该单共计：{{item.price}}￥
+        </text>
+      </view>
+      <view data-orderId="{{item._id}}" bindtap="cancelOrder" class="btn" wx:if="{{item.state==='pending'}}">
+        取消
+      </view>
+    </view>
+  </view>
+</view>
+<view class="nodata" wx:else>
+  <text>空荡荡啊，空荡荡~~</text>
+</view>
