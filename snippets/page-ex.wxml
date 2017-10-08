@@ -1,0 +1,7 @@
+<view wx:if="{{pageExToastShow}}"
+class="page-ex-toast {{pageExToastEaseOut?'page-ex-toast-easeout':''}}" >
+{{pageExToast}}
+</view>
+<view wx:if="{{pageExLoading}}" class="page-ex-loading ">
+  <text class="icon icon-spinner icon-spin" />
+</view>
